@@ -143,7 +143,7 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
                 bundle.putString("dateofjourney",date_journey);
                 bundle.putString("start",start_kms);
                 bundle.putString("end",end_kms);
-                Intent intent=new Intent();
+                Intent intent = new Intent(this, Voucher.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
 
