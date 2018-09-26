@@ -2,6 +2,7 @@ package com.example.driverproject.driver_slip;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -44,7 +45,8 @@ public class Voucher extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voucher);
 
-        Bundle bundle=new Bundle();
+        Intent receive = getIntent();
+        Bundle bundle = receive.getExtras();
         String vehicle_Type=bundle.getString("VehicleType");
         String vehicle_Number=bundle.getString("VehicleNumber");
         String date_journey=bundle.getString("dateofjourney");
