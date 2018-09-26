@@ -21,10 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="84dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_orange_light"
+            android:paddingTop="20dp"
             android:text="New Duty Slip"
             android:textAlignment="center"
-            android:textColor="@android:color/holo_blue_dark"
+            android:textColor="@android:color/white"
             android:textSize="24sp" />
 
         <TextView
@@ -43,11 +43,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="85dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/textView5"
@@ -73,11 +73,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="73dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/textView8"
@@ -103,11 +103,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="83dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/textView11"
@@ -132,11 +132,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="115dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/textView12"
@@ -161,25 +161,25 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="206dp"
+            android:layout_height="157dp"
             android:baselineAligned="true"
             android:paddingBottom="8dp"
-            android:paddingTop="16dp">
+            android:paddingTop="80dp">
 
             <Button
                 android:id="@+id/buttonSave"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="64dp"
                 android:layout_weight="1"
                 android:paddingLeft="8dp"
                 android:text="SAVE" />
 
             <Button
                 android:id="@+id/button6"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="62dp"
                 android:layout_weight="1"
                 android:paddingRight="8dp"
                 android:text="SUBMIT" />

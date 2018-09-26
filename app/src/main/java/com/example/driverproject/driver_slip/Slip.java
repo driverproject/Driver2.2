@@ -137,8 +137,6 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.button6:
                 saveData();
-
-
                 break;
 
         }
