@@ -140,7 +140,7 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
                 //used bundle to transfer strings
 
                 Intent intent = new Intent(this, Voucher.class);
-                bundle.putString("VehicleName", vehicle_Type);
+                bundle.putString("VehicleType", vehicle_Type);
                 bundle.putString("VehicleNumber", vehicle_Number);
                 bundle.putString("dateofjourney", date_journey);
                 bundle.putString("start", start_kms);
