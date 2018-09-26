@@ -53,7 +53,7 @@
         <ImageView
             android:id="@+id/signatureImage"
             android:layout_width="wrap_content"
-            android:layout_height="150dp."
+            android:layout_height="150dp"
             android:layout_weight="1"
             android:contentDescription="@string/Desc"
             android:paddingTop="100dp" />
@@ -83,6 +83,7 @@
 
         <Button
             android:id="@+id/button2"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
