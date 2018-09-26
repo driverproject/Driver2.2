@@ -38,7 +38,7 @@ public class Voucher extends AppCompatActivity {
     signature mSignature;
     Bitmap bitmap;
     ImageView image;
-    TextView textView4,textView5,textView6,textView7,textView8;
+    TextView textView4, textView5, textView6, textView7, textView8, textView9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,11 @@ public class Voucher extends AppCompatActivity {
         String date_journey=bundle.getString("dateofjourney");
         String start_kms=bundle.getString("start");
         String end_kms=bundle.getString("end");
+        int startkmsnum = Integer.parseInt(start_kms);
+
+        int endkmsnum = Integer.parseInt(end_kms);
+
+        int totaltravel = (endkmsnum - startkmsnum);
         image = (ImageView) findViewById(R.id.signatureImage);
         // Setting ToolBar as ActionBar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -66,6 +71,9 @@ public class Voucher extends AppCompatActivity {
 
         textView8=(TextView)findViewById(R.id.textView8);
 
+        textView9 = (TextView) findViewById(R.id.textView9);
+
+
         btn_get_sign = (Button) findViewById(R.id.signature);
 
         textView4.setText("Voucher Number:#");
@@ -78,6 +86,7 @@ public class Voucher extends AppCompatActivity {
 
         textView8.setText("End KMS:"+end_kms);
 
+        textView9.setText("Total travel:" + Integer.toString(totaltravel));
 
         dialog = new Dialog(Voucher.this);
 
