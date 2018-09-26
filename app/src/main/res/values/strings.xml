@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Driver-Slip</string>
+    <string name="Open">Driver-Slip</string>
+    <string name="Close">Driver-Slip</string>
+    <string name="Desc">Image</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_sign">Get Signature</string>
+    <string name="dialog_title">SIGN HERE</string>
+    <string name="hint_cancel">Cancel</string>
+    <string name="hint_clear">Clear</string>
+    <string name="hint_save">Save</string>
+
+</resources>
