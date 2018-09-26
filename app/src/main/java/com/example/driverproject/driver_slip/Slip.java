@@ -137,7 +137,7 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
                 String start_kms=startkms.getText().toString();
                 String end_kms=endkms.getText().toString();
 
-
+                //used bundle to transfer strings
                 bundle.putString("VehicleName",vehicle_Type);
                 bundle.putString("VehicleNumber",vehicle_Number);
                 bundle.putString("dateofjourney",date_journey);
