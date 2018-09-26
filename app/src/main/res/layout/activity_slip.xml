@@ -65,7 +65,7 @@
 
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="innova"
+                android:hint="Innova"
                 android:inputType="textPersonName"
                 android:paddingRight="8dp" />
 
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="MH12AE9110"
+                android:hint="MH 12 AE 9110"
                 android:inputType="textPersonName"
                 android:paddingRight="8dp" />
 
