@@ -17,6 +17,7 @@
         android:layout_marginTop="80dp"
 
         app:layout_constraintCircleRadius="50dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:maxHeight="40dp"
         android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Username"
@@ -52,8 +54,8 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@android:color/background_light"
-        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/background_ligh"
+        android:textColorHint="@android:color/red"
         android:textColorLink="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
