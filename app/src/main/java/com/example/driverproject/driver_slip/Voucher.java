@@ -9,6 +9,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -23,8 +26,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.ProgressDialog;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 public class Voucher extends AppCompatActivity {
 
@@ -40,6 +53,15 @@ public class Voucher extends AppCompatActivity {
     ImageView image;
     TextView textView4, textView5, textView6, textView7, textView8, textView9;
 
+    private Button btnChoose, btnUpload;
+    private ImageView imageView;
+
+    private Uri filePath;
+
+    private final int PICK_IMAGE_REQUEST = 71;
+
+    FirebaseStorage storage;
+    StorageReference storageReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +74,9 @@ public class Voucher extends AppCompatActivity {
         String date_journey=bundle.getString("dateofjourney");
         String start_kms=bundle.getString("start");
         String end_kms=bundle.getString("end");
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
         int startkmsnum = Integer.parseInt(start_kms);
 
         int endkmsnum = Integer.parseInt(end_kms);
@@ -73,7 +98,9 @@ public class Voucher extends AppCompatActivity {
 
         textView9 = (TextView) findViewById(R.id.textView9);
 
-
+        btnChoose = (Button) findViewById(R.id.btnChoose);
+        btnUpload = (Button) findViewById(R.id.btnUpload);
+        imageView = (ImageView) findViewById(R.id.TollSlipImage);
         btn_get_sign = (Button) findViewById(R.id.signature);
 
         textView4.setText("Voucher Number:#");
@@ -86,7 +113,7 @@ public class Voucher extends AppCompatActivity {
 
         textView8.setText("End KMS:"+end_kms);
 
-        textView9.setText("Total travel:" + Integer.toString(totaltravel));
+        textView9.setText("Total travel:" + Integer.toString(totaltravel) + "kms");
 
         dialog = new Dialog(Voucher.this);
 
@@ -103,6 +130,75 @@ public class Voucher extends AppCompatActivity {
             }
         });
 
+        btnChoose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chooseImage();
+            }
+        });
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uploadImage();
+            }
+        });
+
+    }
+
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            filePath = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void uploadImage() {
+
+        if (filePath != null) {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+            ref.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(Voucher.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(Voucher.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                        }
+                    });
+        }
     }
 
     public void dialog_action() {
