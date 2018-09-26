@@ -54,7 +54,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@android:color/background_ligh"
+        android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/red"
         android:textColorLink="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
