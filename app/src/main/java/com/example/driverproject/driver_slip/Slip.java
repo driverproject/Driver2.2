@@ -115,6 +115,15 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
             Vehicle v = new Vehicle(user_id, vehicle_Type, vehicle_Number, date_journey, start_kms, end_kms);
             databaseVehicle.child(id).setValue(v);
             Toast.makeText(this, "Added details", Toast.LENGTH_LONG).show();
+            Bundle bundle = new Bundle();
+            Intent intent = new Intent(this, Voucher.class);
+            bundle.putString("VehicleType", vehicle_Type);
+            bundle.putString("VehicleNumber", vehicle_Number);
+            bundle.putString("dateofjourney", date_journey);
+            bundle.putString("start", start_kms);
+            bundle.putString("end", end_kms);
+            intent.putExtras(bundle);
+            startActivity(intent);
         }
     }
 
@@ -128,25 +137,7 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.button6:
                 saveData();
-                Bundle bundle=new Bundle();
 
-
-                String vehicle_Type=vehicle.getText().toString().trim();
-                String vehicle_Number=vehicleNumber.getText().toString();
-                String date_journey=date_entry.getText().toString();
-                String start_kms=startkms.getText().toString();
-                String end_kms=endkms.getText().toString();
-
-                //used bundle to transfer strings
-
-                Intent intent = new Intent(this, Voucher.class);
-                bundle.putString("VehicleType", vehicle_Type);
-                bundle.putString("VehicleNumber", vehicle_Number);
-                bundle.putString("dateofjourney", date_journey);
-                bundle.putString("start", start_kms);
-                bundle.putString("end", end_kms);
-                intent.putExtras(bundle);
-                startActivity(intent);
 
                 break;
 
