@@ -34,7 +34,7 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
 
         long date = System.currentTimeMillis();
 
-
+    //hello
 
         databaseVehicle= FirebaseDatabase.getInstance().getReference("Vehicle");
 
