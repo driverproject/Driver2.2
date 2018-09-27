@@ -14,7 +14,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/textView7"
@@ -24,6 +26,7 @@
             android:paddingTop="20dp"
             android:text="New Duty Slip"
             android:textAlignment="center"
+            android:textStyle="bold"
             android:textColor="@android:color/white"
             android:textSize="24sp" />
 
@@ -51,9 +54,10 @@
 
             <TextView
                 android:id="@+id/textView5"
-                android:layout_width="242dp"
+                android:layout_width="331dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingBottom="18px"
                 android:paddingLeft="8dp"
                 android:text="Vehicle Type:"
                 android:textSize="18sp" />
@@ -81,7 +85,7 @@
 
             <TextView
                 android:id="@+id/textView8"
-                android:layout_width="218dp"
+                android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="8dp"
