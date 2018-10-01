@@ -48,7 +48,7 @@ public class Voucher extends AppCompatActivity {
 
     Toolbar toolbar;
     Button btn_get_sign, mClear, mGetSign, mCancel;
-
+    boolean btnFlag;
     File file;
     Dialog dialog;
     LinearLayout mContent;
@@ -90,7 +90,7 @@ public class Voucher extends AppCompatActivity {
         int startkmsnum = Integer.parseInt(start_kms);
 
         int endkmsnum = Integer.parseInt(end_kms);
-
+        btnFlag=true;
         int totaltravel = (endkmsnum - startkmsnum);
         image = (ImageView) findViewById(R.id.signatureImage);
         // Setting ToolBar as ActionBar
@@ -108,22 +108,22 @@ public class Voucher extends AppCompatActivity {
 
         textView9 = (TextView) findViewById(R.id.textView9);
 
-        btnChoose = (Button) findViewById(R.id.btnChoose);
+
         btnUpload = (Button) findViewById(R.id.btnUpload);
         imageView = (ImageView) findViewById(R.id.TollSlipImage);
         btn_get_sign = (Button) findViewById(R.id.signature);
 
-        textView4.setText("Voucher Number:#");
+        textView4.setText("Voucher Number: #");
 
-        textView5.setText("Vehicle Type:"+vehicle_Type);
+        textView5.setText("Vehicle Type:  "+vehicle_Type);
 
-        textView6.setText("Vehicle Number:"+vehicle_Number);
+        textView6.setText("Vehicle Number:  "+vehicle_Number);
 
-        textView7.setText("Start KMS:"+start_kms);
+        textView7.setText("Start KMS:  "+start_kms);
 
-        textView8.setText("End KMS:"+end_kms);
+        textView8.setText("End KMS:  "+end_kms);
 
-        textView9.setText("Total travel:" + Integer.toString(totaltravel) + "kms");
+        textView9.setText("Total travel:   " + Integer.toString(totaltravel) + " kms");
 
         dialog = new Dialog(Voucher.this);
 
@@ -140,16 +140,17 @@ public class Voucher extends AppCompatActivity {
             }
         });
 
-        btnChoose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                chooseImage();
-            }
-        });
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uploadImage();
+               if(btnFlag)
+               {
+                   chooseImage();
+               }
+               else
+               {
+                   uploadImage();
+               }
             }
         });
 
@@ -160,6 +161,9 @@ public class Voucher extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        btnUpload.setText("UPLOAD");
+        btnFlag=false;
+
     }
 
     @Override
@@ -191,6 +195,8 @@ public class Voucher extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
                             Toast.makeText(Voucher.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            btnUpload.setText("CHOOSE");
+                            btnFlag=true;
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

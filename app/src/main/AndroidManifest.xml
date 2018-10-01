@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ProfileActivity"
+            android:theme="@style/AppTheme"/>
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".Slip" />
         <activity android:name=".Voucher"></activity>

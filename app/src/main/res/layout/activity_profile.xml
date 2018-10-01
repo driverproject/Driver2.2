@@ -17,7 +17,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient"
+    android:background="@android:color/white"
     tools:context=".ProfileActivity">
 
     <android.support.design.widget.FloatingActionButton
@@ -32,7 +32,7 @@
         android:elevation="4dp"
         android:onClick="floatButton"
         android:src="@drawable/grayplus"
-        app:backgroundTint="@android:color/holo_green_light" />
+        app:backgroundTint="@android:color/holo_blue_dark" />
 
     <TextView
 
@@ -44,7 +44,7 @@
         android:layout_marginTop="70dp"
         android:onClick="setDate"
         android:text=""
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         app:fontFamily="sans-serif-condensed" />
 
