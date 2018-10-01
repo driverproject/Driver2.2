@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.textView2).setOnClickListener(this);
+
         findViewById(R.id.button).setOnClickListener(this);
         mAuth=FirebaseAuth.getInstance();
 
@@ -102,9 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         switch (v.getId())
         {
-            case R.id.textView2:
-                startActivity(new Intent(this,SignUpActivity.class));
-                break;
             case R.id.button:
                 userLogin();
                 break;
