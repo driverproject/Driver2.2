@@ -41,6 +41,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
+            android:onClick="setDate"
             android:drawableLeft="@drawable/ic_perm_contact_calendar_black_24dp" />
 
         <TextView
