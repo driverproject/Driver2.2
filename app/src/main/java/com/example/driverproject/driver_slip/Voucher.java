@@ -161,7 +161,7 @@ public class Voucher extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-        btnUpload.setText("UPLOAD");
+
         btnFlag=false;
 
     }
@@ -175,6 +175,7 @@ public class Voucher extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
+                btnUpload.setText("UPLOAD");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -260,7 +261,7 @@ public class Voucher extends AppCompatActivity {
                 Log.v("log_tag", "Panel Canceled");
                 dialog.dismiss();
                 // Calling the same class
-                recreate();
+
             }
         });
         dialog.show();

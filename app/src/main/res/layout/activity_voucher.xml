@@ -116,8 +116,9 @@
 
         <LinearLayout
 
-            android:layout_width="195dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
@@ -143,8 +144,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
@@ -154,8 +156,7 @@
                 android:layout_weight="5"
                 android:layout_marginLeft="2dp"
                 android:background="@drawable/border"
-                android:contentDescription="@string/Desc"
-                android:scaleType="centerInside" />
+                android:contentDescription="@string/Desc" />
 
             <Button
                 android:id="@+id/btnUpload"
@@ -164,7 +165,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_weight="2"
                 android:background="@android:color/holo_blue_dark"
-                android:text="chose" />
+                android:text="choose" />
 
         </LinearLayout>
 
