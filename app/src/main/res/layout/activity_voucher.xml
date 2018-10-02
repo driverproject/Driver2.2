@@ -27,86 +27,88 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="8"
+            android:background="@android:color/holo_blue_dark"
             android:gravity="center"
             android:text="COMPANY PVT LTD"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="5.4"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/textView4"
-        android:paddingLeft="5dp"
-        android:paddingTop="10dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.9"
-        android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp" />
+        android:layout_weight="5.4"
+        android:orientation="vertical">
 
-    <TextView
-        android:paddingLeft="5dp"
-        android:paddingTop="10dp"
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.9"
-        android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="TextView"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:paddingTop="10dp"
-        android:paddingLeft="5dp"
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.9"
-        android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="TextView"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:paddingTop="10dp"
-        android:paddingLeft="5dp"
-        android:id="@+id/textView7"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.9"
-        android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="TextView"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:paddingTop="10dp"
-        android:paddingLeft="5dp"
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.9"
-        android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="TextView"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:paddingTop="10dp"
-        android:paddingLeft="5dp"
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.9"
-        android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="TextView"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="TextView"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp" />
 
 
-</LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -125,9 +127,9 @@
                 android:id="@+id/signatureImage"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginRight="2dp"
                 android:layout_weight="5"
                 android:background="@drawable/border"
-                android:layout_marginRight="2dp"
                 android:contentDescription="@string/Desc"
                 android:scaleType="centerInside" />
 
@@ -138,7 +140,8 @@
                 android:layout_marginRight="2dp"
                 android:layout_weight="2"
                 android:background="@android:color/holo_blue_dark"
-                android:text="@string/hint_sign" />
+                android:text="@string/hint_sign"
+                android:textColor="@android:color/white" />
 
 
         </LinearLayout>
@@ -153,8 +156,8 @@
                 android:id="@+id/TollSlipImage"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="5"
                 android:layout_marginLeft="2dp"
+                android:layout_weight="5"
                 android:background="@drawable/border"
                 android:contentDescription="@string/Desc" />
 
@@ -165,7 +168,8 @@
                 android:layout_marginLeft="2dp"
                 android:layout_weight="2"
                 android:background="@android:color/holo_blue_dark"
-                android:text="choose" />
+                android:text="choose"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 
