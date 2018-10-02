@@ -1,8 +1,8 @@
 package com.example.driverproject.driver_slip;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -124,6 +124,7 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
             bundle.putString("end", end_kms);
             intent.putExtras(bundle);
             startActivity(intent);
+            finish();
         }
     }
 
