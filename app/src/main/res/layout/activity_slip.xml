@@ -23,13 +23,14 @@
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="84dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
+            android:background="@color/colorPrimary"
             android:paddingTop="20dp"
             android:text="New Duty Slip"
             android:textAlignment="center"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/editTextDate"
@@ -54,15 +55,16 @@
             android:paddingTop="8dp">
 
             <TextView
-                android:textColor="@android:color/black"
                 android:id="@+id/textView5"
                 android:layout_width="331dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingBottom="18px"
                 android:paddingLeft="8dp"
+                android:paddingBottom="18px"
                 android:text="Vehicle Type:"
-                android:textSize="18sp" />
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextVehicleType"
@@ -72,8 +74,9 @@
                 android:ems="10"
                 android:hint="Innova"
                 android:inputType="textPersonName"
-                android:textColorHint="@android:color/darker_gray"
-                android:paddingRight="8dp" />
+                android:paddingRight="8dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray" />
 
         </LinearLayout>
 
@@ -92,8 +95,9 @@
                 android:layout_weight="1"
                 android:paddingLeft="8dp"
                 android:text="Vehicle No.:"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextVehicleNumber"
@@ -102,9 +106,10 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="MH 12 AE 9110"
-                android:textColorHint="@android:color/darker_gray"
                 android:inputType="textPersonName"
-                android:paddingRight="8dp" />
+                android:paddingRight="8dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray" />
 
         </LinearLayout>
 
@@ -123,9 +128,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="8dp"
-                android:textColor="@android:color/black"
                 android:text="Start Reading(Km) :"
-                android:textSize="18sp" />
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextKMSS"
@@ -134,9 +140,10 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="33"
-                android:textColorHint="@android:color/darker_gray"
                 android:inputType="number"
-                android:paddingRight="8dp" />
+                android:paddingRight="8dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray" />
         </LinearLayout>
 
 
@@ -154,10 +161,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="8dp"
-                android:textColor="@android:color/black"
                 android:text="End Reading(Km) :"
+                android:textColor="@android:color/holo_blue_dark"
 
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextKMSP"
@@ -166,36 +174,38 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="44"
-                android:textColorHint="@android:color/darker_gray"
                 android:inputType="number"
-                android:paddingRight="8dp" />
+                android:paddingRight="8dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray" />
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="157dp"
+            android:layout_height="match_parent"
             android:baselineAligned="true"
-            android:paddingBottom="8dp"
-            android:paddingTop="80dp">
+            android:paddingTop="25dp">
 
             <Button
                 android:id="@+id/buttonSave"
                 android:background="@android:color/holo_blue_dark"
-                android:layout_width="wrap_content"
-                android:layout_height="62dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:paddingLeft="8dp"
+                android:layout_gravity="bottom"
                 android:text="SAVE" />
 
             <Button
                 android:id="@+id/button6"
                 android:layout_marginLeft="2dp"
                 android:background="@android:color/holo_blue_dark"
-                android:layout_width="wrap_content"
-                android:layout_height="62dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_gravity="bottom"
                 android:paddingRight="8dp"
                 android:text="SUBMIT" />
         </LinearLayout>
