@@ -1,6 +1,7 @@
 package com.example.driverproject.driver_slip;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,10 +11,10 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -26,7 +27,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.ProgressDialog;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -198,6 +198,11 @@ public class Voucher extends AppCompatActivity {
                             Toast.makeText(Voucher.this, "Uploaded", Toast.LENGTH_SHORT).show();
                             btnUpload.setText("CHOOSE");
                             btnFlag=true;
+
+                            Intent i = new Intent(Voucher.this, ProfileActivity.class);
+                            startActivity(i);
+                            finish();
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -215,6 +220,7 @@ public class Voucher extends AppCompatActivity {
                             progressDialog.setMessage("Uploaded " + (int) progress + "%");
                         }
                     });
+
         }
     }
 
