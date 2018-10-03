@@ -1,7 +1,6 @@
 package com.example.driverproject.driver_slip;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,11 +9,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.ProgressDialog;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,6 +38,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -54,8 +56,8 @@ public class Voucher extends AppCompatActivity {
     LinearLayout mContent;
     View view;
     signature mSignature;
-    Bitmap bitmap;
-    ImageView image;
+    Bitmap bitmap, bitmap_sign;
+    ImageView image, image_sign;
     TextView textView4, textView5, textView6, textView7, textView8, textView9;
 
     private Button btnChoose, btnUpload;
@@ -65,9 +67,13 @@ public class Voucher extends AppCompatActivity {
 
     private final int PICK_IMAGE_REQUEST = 71;
 
+    FirebaseUser user;
+
     FirebaseStorage storage;
     StorageReference storageReference;
+    StorageReference signRef;
     String formattedDate;
+    String folder_random;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,8 +91,11 @@ public class Voucher extends AppCompatActivity {
 
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
         formattedDate = df.format(c);
+        folder_random = UUID.randomUUID().toString();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        signRef = storageReference.child("images/" + user.getUid().toString() + "/" + formattedDate + "/" + folder_random + "/signimage");
         int startkmsnum = Integer.parseInt(start_kms);
 
         int endkmsnum = Integer.parseInt(end_kms);
@@ -111,6 +120,7 @@ public class Voucher extends AppCompatActivity {
 
         btnUpload = (Button) findViewById(R.id.btnUpload);
         imageView = (ImageView) findViewById(R.id.TollSlipImage);
+        image_sign = (ImageView) findViewById(R.id.signatureImage);
         btn_get_sign = (Button) findViewById(R.id.signature);
 
         textView4.setText("Voucher Number: #");
@@ -143,14 +153,11 @@ public class Voucher extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               if(btnFlag)
-               {
-                   chooseImage();
-               }
-               else
-               {
-                   uploadImage();
-               }
+                if (btnFlag) {
+                    chooseImage();
+                } else {
+                    uploadImage();
+                }
             }
         });
 
@@ -161,7 +168,7 @@ public class Voucher extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-
+        btnUpload.setText("UPLOAD");
         btnFlag=false;
 
     }
@@ -175,7 +182,6 @@ public class Voucher extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
-                btnUpload.setText("UPLOAD");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -185,24 +191,28 @@ public class Voucher extends AppCompatActivity {
     private void uploadImage() {
 
         if (filePath != null) {
+
+
+            Bitmap bitmap = ((BitmapDrawable) image_sign.getDrawable()).getBitmap();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] data1 = baos.toByteArray();
+            UploadTask uploadTask = signRef.putBytes(data1);
+
+
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            StorageReference ref = storageReference.child("images/" + user.getUid().toString() + formattedDate + "/" + UUID.randomUUID().toString());
+
+            StorageReference ref = storageReference.child("images/" + user.getUid().toString() + "/" + formattedDate + "/" + folder_random + "/slipimage");
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
-                            Toast.makeText(Voucher.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Voucher.this, "Uploaded Image and Signature", Toast.LENGTH_SHORT).show();
                             btnUpload.setText("CHOOSE");
                             btnFlag=true;
-
-                            Intent i = new Intent(Voucher.this, ProfileActivity.class);
-                            startActivity(i);
-                            finish();
-
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -220,7 +230,6 @@ public class Voucher extends AppCompatActivity {
                             progressDialog.setMessage("Uploaded " + (int) progress + "%");
                         }
                     });
-
         }
     }
 
