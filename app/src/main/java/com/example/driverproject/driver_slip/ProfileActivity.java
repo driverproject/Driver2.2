@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
     private Calendar calendar;
-    private TextView dateView;
+
     private int year, month, day;
 
 
@@ -38,13 +38,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        dateView = (TextView) findViewById(R.id.text_view_date);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
 
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
-        showDate(year, month+1, day);
 
 
         firebaseAuth=FirebaseAuth.getInstance();
@@ -126,14 +124,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     // arg1 = year
                     // arg2 = month
                     // arg3 = day
-                    showDate(arg1, arg2+1, arg3);
                 }
             };
 
-    private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(day).append("/")
-                .append(month).append("/").append(year));
-    }
+
     @Override
     public  boolean onOptionsItemSelected(MenuItem menuItem)
     {
