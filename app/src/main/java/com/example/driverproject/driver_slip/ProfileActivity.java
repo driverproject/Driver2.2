@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,19 +19,30 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth firebaseAuth;
     private DrawerLayout dl;
     private ActionBarDrawerToggle abdt;
-
-
+    private List<Vehicle> vehicleList;
+    private DatabaseReference databaseReference;
     private Calendar calendar;
-
+    private Button fetchButton;
     private int year, month, day;
+
+    TextView textViewTest;
+
 
 
     @Override
@@ -38,16 +50,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        fetchButton=(Button)findViewById(R.id.fetchButton);
+        fetchButton.setOnClickListener(this);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
-
+        vehicleList = new ArrayList<>();
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
         firebaseAuth=FirebaseAuth.getInstance();
         FirebaseUser user= firebaseAuth.getCurrentUser();
-
+        databaseReference= FirebaseDatabase.getInstance().getReference("Vehicle");
 
         dl=(DrawerLayout) findViewById(R.id.dl);
         abdt= new ActionBarDrawerToggle(this,dl,R.string.Open,R.string.Close);
@@ -137,6 +151,34 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v)
     {
+        switch (v.getId())
+        {
+            case R.id.fetchButton:
+            {
+                String user_id = firebaseAuth.getCurrentUser().getUid();
+                Toast.makeText(this,user_id,Toast.LENGTH_SHORT).show();
 
+                databaseReference.child(user_id).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot)
+                    {
+                        for(DataSnapshot vehicleSnapshot : dataSnapshot.getChildren())
+                        {
+                            Vehicle v= vehicleSnapshot.getValue(Vehicle.class);
+                            Toast.makeText(getApplicationContext(),v.getVehicle_Type(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),v.getVehicle_Number(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError)
+                    {
+
+                    }
+                });
+            }
+        }
     }
+
+
 }

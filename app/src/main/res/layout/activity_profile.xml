@@ -42,8 +42,18 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
             android:onClick="setDate"
-            android:drawableLeft="@drawable/ic_baseline_date_range_24px"
-            android:drawableStart="@drawable/ic_baseline_date_range_24px" />
+            android:drawableLeft="@drawable/ic_baseline_event_24px"
+            android:drawableStart="@drawable/ic_baseline_event_24px" />
+
+        <Button
+            android:id="@+id/fetchButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="108dp"
+            android:text="Fetch"
+            />
 
 
 

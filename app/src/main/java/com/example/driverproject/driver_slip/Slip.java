@@ -110,10 +110,11 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
         }
         else
         {
+
             String user_id = mauth.getCurrentUser().getUid();
             String id = databaseVehicle.push().getKey();
-            Vehicle v = new Vehicle(user_id, vehicle_Type, vehicle_Number, date_journey, start_kms, end_kms);
-            databaseVehicle.child(id).setValue(v);
+            Vehicle v = new Vehicle( vehicle_Type, vehicle_Number, date_journey, start_kms, end_kms);
+            databaseVehicle.child(user_id).push().setValue(v);
             Toast.makeText(this, "Added details", Toast.LENGTH_LONG).show();
             Bundle bundle = new Bundle();
             Intent intent = new Intent(this, Voucher.class);
