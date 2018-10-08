@@ -273,6 +273,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                                 //v has data of vehicle
                                 //***************************
                                 //pratik function to download
+                                //
                                 //***************************
                             }
                         });
