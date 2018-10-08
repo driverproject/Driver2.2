@@ -32,6 +32,14 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slip);
 
+        Intent receive = getIntent();
+        Bundle bundle = receive.getExtras();
+        String vehicle_Type = bundle.getString("VehicleType");
+        String vehicle_Number = bundle.getString("VehicleNumber");
+        String date_journey = bundle.getString("dateofjourney");
+        String start_kms = bundle.getString("start");
+        String end_kms = bundle.getString("end");
+        boolean flag = false;
         long date = System.currentTimeMillis();
 
     //hello
@@ -48,6 +56,13 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
 
         endkms=(EditText)findViewById(R.id.editTextKMSP);
 
+
+        if (!vehicle_Number.equals("")) {
+            vehicle.setText(vehicle_Type);
+            vehicleNumber.setText(vehicle_Number);
+            startkms.setText(start_kms);
+            endkms.setText(end_kms);
+        }
 
         SimpleDateFormat sdf = new SimpleDateFormat(" MM/dd/yyyy");
         String dateString = sdf.format(date);

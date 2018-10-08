@@ -42,7 +42,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private List<Vehicle> vehicleList;
     private DatabaseReference databaseReference;
     private Calendar calendar;
-    public ArrayList<String> myDataset;
+    public ArrayList<Vehicle> myDataset;
+    public ArrayList<DataSnapshot> dslist;
     private int year, month, day;
     //    RecyclerView recyclerView;
 //    ProfileAdapter profileAdapter;
@@ -78,6 +79,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 //        recyclerView.setAdapter(profileAdapter);
 
         myDataset = new ArrayList<>();
+        dslist = new ArrayList<>();
         context = ProfileActivity.this;
 
 //        fetchButton = (Button) findViewById(R.id.fetchButton);
@@ -150,7 +152,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     public void floatButton(View view) {
         Toast.makeText(this, "New Slip ", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, Slip.class));
+        Bundle bundle = new Bundle();
+        Intent intent = new Intent(getApplicationContext(), Slip.class);
+        bundle.putString("VehicleType", "");
+        bundle.putString("VehicleNumber", "");
+        bundle.putString("dateofjourney", "");
+        bundle.putString("start", "");
+        bundle.putString("end", "");
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     private void showDate(int year, int month, int day) {
@@ -160,6 +170,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         test(date);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         return abdt.onOptionsItemSelected(menuItem) || super.onOptionsItemSelected(menuItem);
@@ -211,19 +222,64 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 myDataset.clear();
+                dslist.clear();
                 Log.d("EXACTLY", dataSnapshot.getChildrenCount() + "");
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     //Log.d("EXACTLY", ds.getValue().toString());
+                    dslist.add(ds);
                     Vehicle v = ds.getValue(Vehicle.class);
+//                    ds.getRef().removeValue();
                     Log.d("EXACTLY", date + " " + v.getDate_journey());
                     if (("Date: " + date).equals(v.getDate_journey())) {
                         Log.d("EXACTLY", v.getVehicle_Type());
-                        myDataset.add(v.getVehicle_Type());
+                        myDataset.add(v);
                     }
                 }
                 mAdapter = new MyAdapter(myDataset);
                 recyclerView.setAdapter(mAdapter);
+                recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
+                    @Override
+                    public void onClick(View view, final int position) {
+                        TextView txt = (TextView) view.findViewById(R.id.textViewS);
+
+                        Log.d("NAVIN", "" + txt.getText());
+                        Button ebtn = (Button) view.findViewById(R.id.buttonE);
+                        ebtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dslist.get(position).getRef().removeValue();
+
+                                Toast.makeText(getApplicationContext(), "kahitari", Toast.LENGTH_LONG).show();
+                                Log.d("EXACTLY", "hotNahir");
+                                Vehicle v = myDataset.get(position);
+                                Bundle bundle = new Bundle();
+                                Intent intent = new Intent(getApplicationContext(), Slip.class);
+                                bundle.putString("VehicleType", v.getVehicle_Type());
+                                bundle.putString("VehicleNumber", v.getVehicle_Number());
+                                bundle.putString("dateofjourney", v.getDate_journey());
+                                bundle.putString("start", v.getStart_kms());
+                                bundle.putString("end", v.getEnd_kms());
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+                            }
+                        });
+                        switch (view.getId()) {
+                            case R.id.textViewS: {
+
+                            }
+                        }
+//                        Vehicle vehicle = myDataset.get(position);
+//                        Toast.makeText(getApplicationContext(), vehicle.getVehicle_Type() + " is selected!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onLongClick(View view, int position) {
+
+                    }
+
+                }));
+
             }
 
             @Override
@@ -237,9 +293,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 }
 
 class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private ArrayList<String> mDataset;
+    private ArrayList<Vehicle> mDataset;
 
-    public MyAdapter(ArrayList<String> myDataset) {
+    public MyAdapter(ArrayList<Vehicle> myDataset) {
         mDataset = myDataset;
     }
 
@@ -254,7 +310,8 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.cardText.setText(mDataset.get(position));
+        Vehicle v = mDataset.get(position);
+        holder.cardText.setText(v.getVehicle_Type());
 
     }
 
@@ -265,10 +322,25 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView cardText;
+        public Button dbtn, ebtn;
 
         public MyViewHolder(View v) {
             super(v);
             cardText = (TextView) v.findViewById(R.id.textViewS);
+            dbtn = (Button) v.findViewById(R.id.buttonD);
+            ebtn = (Button) v.findViewById(R.id.buttonE);
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    switch (view.getId()) {
+                        case R.id.buttonD: {
+                            int pos = getAdapterPosition();
+                            Toast.makeText(itemView.getContext(), "hehe", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                }
+            });
         }
     }
 }
