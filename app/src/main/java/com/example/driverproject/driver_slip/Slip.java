@@ -25,6 +25,7 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
     DatabaseReference databaseVehicle;
     FirebaseAuth mauth;
     private Calendar calender;
+    private boolean flag;
 
 
     @Override
@@ -39,7 +40,7 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
         String date_journey = bundle.getString("dateofjourney");
         String start_kms = bundle.getString("start");
         String end_kms = bundle.getString("end");
-        boolean flag = false;
+        flag = false;
         long date = System.currentTimeMillis();
 
     //hello
@@ -76,6 +77,15 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
         mauth=FirebaseAuth.getInstance();
 
 
+    }
+
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+        if (!flag) {
+
+        }
     }
 
     public void saveData()
@@ -151,6 +161,7 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
         {
             case R.id.buttonSave:
                 saveData();
+                flag = true;
                 break;
             case R.id.button6:
                 saveData();
@@ -159,4 +170,5 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
         }
 
     }
+
 }

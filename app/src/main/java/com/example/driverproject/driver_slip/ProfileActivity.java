@@ -264,6 +264,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                                 startActivity(intent);
                             }
                         });
+
+                        Button dbtn = (Button) view.findViewById(R.id.buttonD);
+                        dbtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Vehicle v = myDataset.get(position);
+                                //v has data of vehicle
+                                //***************************
+                                //pratik function to download
+                                //***************************
+                            }
+                        });
                         switch (view.getId()) {
                             case R.id.textViewS: {
 
