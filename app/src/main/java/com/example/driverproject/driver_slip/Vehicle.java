@@ -1,7 +1,11 @@
 package com.example.driverproject.driver_slip;
+
+import android.media.Image;
+
 public class Vehicle {
 
     String vehicle_Type,vehicle_Number,date_journey,start_kms,end_kms,user_id;
+    Image sign;
 
     public Vehicle()
     {
@@ -15,6 +19,7 @@ public class Vehicle {
         this.date_journey = date_journey;
         this.start_kms = start_kms;
         this.end_kms = end_kms;
+
     }
 
     public String getUser_id()
@@ -40,5 +45,9 @@ public class Vehicle {
 
     public String getEnd_kms() {
         return end_kms;
+    }
+
+    public Image getSign() {
+        return sign;
     }
 }

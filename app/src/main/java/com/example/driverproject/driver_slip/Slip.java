@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
 public class Slip extends AppCompatActivity implements View.OnClickListener{
 
     private EditText vehicleNumber;
@@ -78,6 +79,7 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
 
 
     }
+
 
     @Override
     protected void onPause() {

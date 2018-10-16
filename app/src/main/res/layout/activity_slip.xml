@@ -9,206 +9,410 @@
     android:background="@android:color/white"
     tools:context=".Slip">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="84dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_blue_dark"
-            android:paddingTop="20dp"
-            android:text="NEW DUTY SLIP"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/editTextDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="date"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="331dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="8dp"
-                android:paddingBottom="18px"
-                android:text="Vehicle Type:"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/editTextVehicleType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Innova"
-                android:inputType="textPersonName"
-                android:paddingRight="8dp"
-                android:textAllCaps="true"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="73dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="327dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="8dp"
-                android:text="Vehicle No.:"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/editTextVehicleNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="MH 12 AE 9110"
-                android:inputType="textPersonName"
-                android:paddingRight="8dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="83dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="326dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="8dp"
-                android:text="Start Reading(Km) :"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/editTextKMSS"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="33"
-                android:inputType="number"
-                android:paddingRight="8dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="115dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="326dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="8dp"
-                android:text="End Reading(Km) :"
-                android:textColor="@android:color/black"
-
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/editTextKMSP"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="44"
-                android:inputType="number"
-                android:paddingRight="8dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray" />
-        </LinearLayout>
-
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:baselineAligned="true"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp">
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_blue_dark"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="@string/new_duty_slip"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/editTextDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="32dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#d8f7fb"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Slip Number:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editText3"
+                    android:layout_width="274dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="slipnumber"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#BDBDBD" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Time Stamp:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#BDBDBD" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#d8f7fb"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Renter's Name:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editText5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Mick"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#BDBDBD" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Vehicle Type:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editTextVehicleType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Sedan"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#BDBDBD" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#d8f7fb"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Vehicle Number:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editTextVehicleNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="MH12AE9110"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#BDBDBD" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="254dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Starting Reading(Km.):"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editTextKMSS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="3350"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#BDBDBD" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#d8f7fb"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ending Reading(Km.):"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editTextKMSP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="4500"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#BDBDBD" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PickUp Address:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editText11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="flat no.6, RK Road, Pune -411043"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#BDBDBD" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#d8f7fb"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Drop Address:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editText12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Pict, JK Road, Pune -411043"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#BDBDBD" />
+            </LinearLayout>
 
             <Button
-                android:id="@+id/buttonSave"
-                android:layout_width="wrap_content"
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:background="@android:color/holo_blue_dark"
-                android:paddingLeft="8dp"
-                android:text="SAVE" />
+                android:backgroundTint="@color/colorPrimary"
+                android:paddingBottom="8dp"
+                android:text="Get Current Location Coodinates" />
 
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#d8f7fb"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Latitude:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#d8f7fb"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:textColor="#000000"
+                android:textSize="20sp">
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Longitude:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_weight="1"
-                android:background="@android:color/holo_blue_dark"
-                android:paddingRight="8dp"
-                android:text="SUBMIT" />
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp">
+
+
+                <Button
+                    android:id="@+id/buttonSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="SAVE"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/button6"
+                    style="@style/AlertDialog.AppCompat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="NEXT"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
+
+
 </android.support.constraint.ConstraintLayout>
 

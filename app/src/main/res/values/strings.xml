@@ -10,5 +10,6 @@
     <string name="hint_cancel">Cancel</string>
     <string name="hint_clear">Clear</string>
     <string name="hint_save">Save</string>
+    <string name="new_duty_slip">NEW DUTY SLIP</string>
 
 </resources>
