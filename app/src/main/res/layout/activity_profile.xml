@@ -7,6 +7,7 @@
     android:id="@+id/dl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#cffbfe"
     android:orientation="vertical"
     tools:context=".ProfileActivity">
 
@@ -16,7 +17,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:background="#e0f7fa"
         android:orientation="vertical"
         tools:context=".ProfileActivity">
 
@@ -24,16 +25,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8"
-            android:background="@android:color/darker_gray"
             android:orientation="horizontal">
 
             <Button
-                android:layout_height="match_parent"
                 android:id="@+id/btnCalender"
                 android:layout_width="match_parent"
-                android:background="@android:color/darker_gray"
+                android:layout_height="match_parent"
                 android:drawableRight="@drawable/ic_baseline_event_24px"
                 android:onClick="setDate"
+                android:background="@android:color/transparent"
                 android:text="Date" />
 
         </LinearLayout>
@@ -41,8 +41,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="7"
-            android:background="@android:color/darker_gray">
+            android:layout_weight="7">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -56,8 +55,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@android:color/darker_gray">
+            android:layout_weight="1">
 
             <android.support.design.widget.FloatingActionButton
                 android:layout_width="wrap_content"

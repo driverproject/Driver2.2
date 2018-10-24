@@ -49,7 +49,7 @@ import java.util.UUID;
 public class Voucher extends AppCompatActivity {
 
     Toolbar toolbar;
-    Button btn_get_sign, mClear, mGetSign, mCancel;
+    Button btn_get_sign, mClear, mGetSign, mCancel, submitButton;
     boolean btnFlag;
     File file;
     Dialog dialog;
@@ -58,7 +58,7 @@ public class Voucher extends AppCompatActivity {
     signature mSignature;
     Bitmap bitmap, bitmap_sign;
     ImageView image, image_sign;
-    TextView textView4, textView5, textView6, textView7, textView8, textView9;
+    TextView slipId, renterName, vehicleType, vehicleNumber, startReading, endReading, pickupAddress, dropAddress, totalDist, billtext;
 
     private Button btnChoose, btnUpload;
     private ImageView imageView;
@@ -81,12 +81,20 @@ public class Voucher extends AppCompatActivity {
 
         Intent receive = getIntent();
         Bundle bundle = receive.getExtras();
-        String vehicle_Type=bundle.getString("VehicleType");
-        String vehicle_Number=bundle.getString("VehicleNumber");
-        String date_journey=bundle.getString("dateofjourney");
-        String start_kms=bundle.getString("start");
-        String end_kms=bundle.getString("end");
+        String vehicle_Type = bundle.getString("VehicleType");
+        String vehicle_Number = bundle.getString("VehicleNumber");
+        String date_journey = bundle.getString("dateofjourney");
+        String rentersName = bundle.getString("rname");
+        String start_kms = bundle.getString("start");
+        String end_kms = bundle.getString("end");
+        String pickadd = bundle.getString("padd");
+        String dropadd = bundle.getString("dadd");
 
+        Integer stkm = Integer.parseInt(start_kms);
+        Integer enkm = Integer.parseInt(end_kms);
+
+        int bill;
+        bill = (enkm - stkm) * 10;
         Date c = Calendar.getInstance().getTime();
 
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
@@ -105,6 +113,7 @@ public class Voucher extends AppCompatActivity {
         // Setting ToolBar as ActionBar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        /*
         textView4=(TextView)findViewById(R.id.textView4);
 
         textView5=(TextView)findViewById(R.id.textView5);
@@ -115,25 +124,45 @@ public class Voucher extends AppCompatActivity {
 
         textView8=(TextView)findViewById(R.id.textView8);
 
-        textView9 = (TextView) findViewById(R.id.textView9);
+        textView9 = (TextView) findViewById(R.id.textView9);*/
+
+        slipId = (TextView) findViewById(R.id.slipId);
+        renterName = (TextView) findViewById(R.id.renterName);
+        vehicleType = (TextView) findViewById(R.id.vehicleType);
+        vehicleNumber = (TextView) findViewById(R.id.vehicleNumber);
+        startReading = (TextView) findViewById(R.id.startReading);
+        endReading = (TextView) findViewById(R.id.endReading);
+        pickupAddress = (TextView) findViewById(R.id.pickupAddress);
+        dropAddress = (TextView) findViewById(R.id.dropAddress);
+        totalDist = (TextView) findViewById(R.id.totalDist);
+        billtext = (TextView) findViewById(R.id.bill);
 
 
         btnUpload = (Button) findViewById(R.id.btnUpload);
         imageView = (ImageView) findViewById(R.id.TollSlipImage);
         image_sign = (ImageView) findViewById(R.id.signatureImage);
         btn_get_sign = (Button) findViewById(R.id.signature);
+        submitButton = (Button) findViewById(R.id.submit_button);
 
-        textView4.setText("Voucher Number: #");
+        slipId.setText("Voucher Number: " + slipId);
 
-        textView5.setText("Vehicle Type:  "+vehicle_Type);
+        vehicleType.setText("Vehicle Type:  " + vehicle_Type);
 
-        textView6.setText("Vehicle Number:  "+vehicle_Number);
+        vehicleNumber.setText("Vehicle Number:  " + vehicle_Number);
 
-        textView7.setText("Start KMS:  "+start_kms);
+        renterName.setText("Renter Name: " + rentersName);
 
-        textView8.setText("End KMS:  "+end_kms);
+        startReading.setText("Start KMS:  " + start_kms);
 
-        textView9.setText("Total travel:   " + Integer.toString(totaltravel) + " kms");
+        endReading.setText("End KMS:  " + end_kms);
+
+        totalDist.setText("Total travel:   " + Integer.toString(totaltravel) + " kms");
+
+        pickupAddress.setText("PickUp Address: " + pickadd);
+
+        dropAddress.setText("Drop Address: " + dropadd);
+
+        billtext.setText("Amount Payable: Rs." + bill);
 
         dialog = new Dialog(Voucher.this);
 
@@ -160,6 +189,20 @@ public class Voucher extends AppCompatActivity {
                 }
             }
         });
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submit();
+            }
+        });
+
+    }
+
+    private void submit() {
+
+        Intent i = new Intent(this, ProfileActivity.class);
+        startActivity(i);
+        finish();
 
     }
 
@@ -215,9 +258,6 @@ public class Voucher extends AppCompatActivity {
                             btnUpload.setText("CHOOSE");
                             btnFlag=true;
 
-                            Intent i = new Intent(Voucher.this, ProfileActivity.class);
-                            startActivity(i);
-                            finish();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

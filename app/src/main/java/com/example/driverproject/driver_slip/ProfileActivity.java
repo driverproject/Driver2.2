@@ -316,7 +316,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                                         //Toast.makeText(MainActivity.this, "Pressed", Toast.LENGTH_LONG).show();
 
-                                        Paragraph p = new Paragraph("Company Name");
+                                        Paragraph p = new Paragraph("Prime Travels");
 
                                         p.setAlignment(Paragraph.ALIGN_CENTER);
                                         doc.add(p);
@@ -333,50 +333,50 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                                         date.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(date);
 
-                                        Paragraph driverName = new Paragraph("Driver Name: ");
+                                        Paragraph driverName = new Paragraph("Driver Name: " + "Ramesh");
                                         driverName.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(driverName);
 
-                                        Paragraph vehicleType = new Paragraph("Vehicle Type: " + v.getVehicle_Type());
+                                        Paragraph vehicleType = new Paragraph("Vehicle Type: " + "Innova");
                                         vehicleType.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(vehicleType);
 
-                                        Paragraph renterName = new Paragraph("Renter's Name: ");
+                                        Paragraph renterName = new Paragraph("Renter's Name: " + "Parag");
                                         renterName.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(renterName);
 
-                                        Paragraph pickAdd = new Paragraph("Address: ");
+                                        Paragraph pickAdd = new Paragraph("Address: " + "PICT, Dhankawadi, Pune- 411027");
                                         pickAdd.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(pickAdd);
 
-                                        Paragraph vehicleNo = new Paragraph("Vehicle Number: " + v.getVehicle_Type());
+                                        Paragraph vehicleNo = new Paragraph("Vehicle Number: " + "MH12AE9110");
                                         vehicleNo.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(vehicleNo);
 
                                         //Section End
                                         doc.add(new Chunk(lineSeparator));
 
-                                        Paragraph stkm = new Paragraph("Starting Reading(Km): " + v.getStart_kms());
+                                        Paragraph stkm = new Paragraph("Starting Reading(Km): " + "350");
                                         stkm.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(stkm);
 
-                                        Paragraph endkm = new Paragraph("End Reading(Km): + " + v.getEnd_kms());
+                                        Paragraph endkm = new Paragraph("End Reading(Km): + " + "400");
                                         endkm.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(endkm);
 
-                                        Paragraph total = new Paragraph("Total kilometers Travelled(Km): ");
+                                        Paragraph total = new Paragraph("Total kilometers Travelled(Km): " + "50");
                                         total.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(total);
 
-                                        Paragraph rate = new Paragraph("Rate(Rs.): ");
+                                        Paragraph rate = new Paragraph("Rate(Rs.): " + "10");
                                         rate.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(rate);
 
-                                        Paragraph taxes = new Paragraph("taxes(10%): ");
+                                        Paragraph taxes = new Paragraph("taxes(10%): " + "50");
                                         rate.setAlignment(Paragraph.ALIGN_LEFT);
                                         doc.add(rate);
 
-                                        Paragraph bill = new Paragraph(("Total Amount to Pay(Rs.): "));
+                                        Paragraph bill = new Paragraph(("Total Amount to Pay(Rs.): " + "550"));
                                         bill.setAlignment(Paragraph.ALIGN_CENTER);
                                         doc.add(bill);
 

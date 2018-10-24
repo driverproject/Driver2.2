@@ -18,29 +18,30 @@ import java.util.Calendar;
 
 public class Slip extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText vehicleNumber;
+    int stkm, endkm;
     private TextView date_entry;
-    private EditText startkms;
-    private EditText endkms;
-    EditText vehicle;
     DatabaseReference databaseVehicle;
     FirebaseAuth mauth;
     private Calendar calender;
     private boolean flag;
-
+    private EditText vehicle, vehicleNumber, rName, startkms, endkms, padd, dadd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slip);
 
+        //new changes
         Intent receive = getIntent();
         Bundle bundle = receive.getExtras();
         String vehicle_Type = bundle.getString("VehicleType");
         String vehicle_Number = bundle.getString("VehicleNumber");
         String date_journey = bundle.getString("dateofjourney");
+        String rentersName = bundle.getString("rname");
         String start_kms = bundle.getString("start");
         String end_kms = bundle.getString("end");
+        String pickadd = bundle.getString("padd");
+        String dropadd = bundle.getString("dadd");
         flag = false;
         long date = System.currentTimeMillis();
 
@@ -54,9 +55,15 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
 
         date_entry=(TextView) findViewById(R.id.editTextDate);
 
+        rName = (EditText) findViewById(R.id.rentersName);
+
         startkms=(EditText)findViewById(R.id.editTextKMSS);
 
         endkms=(EditText)findViewById(R.id.editTextKMSP);
+
+        padd = (EditText) findViewById(R.id.pickupAddress);
+
+        dadd = (EditText) findViewById(R.id.dropAddress);
 
 
         if (!vehicle_Number.equals("")) {
@@ -76,7 +83,6 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
         findViewById(R.id.button6).setOnClickListener(this);
 
         mauth=FirebaseAuth.getInstance();
-
 
     }
 
@@ -99,6 +105,9 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
         String date_journey=date_entry.getText().toString();
         String start_kms=startkms.getText().toString();
         String end_kms=endkms.getText().toString();
+        String p_add = padd.getText().toString();
+        String d_add = dadd.getText().toString();
+        String renter_name = rName.getText().toString();
 
         if(vehicle_Type.isEmpty())
         {
@@ -147,9 +156,12 @@ public class Slip extends AppCompatActivity implements View.OnClickListener{
             Intent intent = new Intent(this, Voucher.class);
             bundle.putString("VehicleType", vehicle_Type);
             bundle.putString("VehicleNumber", vehicle_Number);
-            bundle.putString("dateofjourney", date_journey);
+            bundle.putString("Dateofjourney", date_journey);
             bundle.putString("start", start_kms);
             bundle.putString("end", end_kms);
+            bundle.putString("rname", renter_name);
+            bundle.putString("padd", p_add);
+            bundle.putString("dadd", d_add);
             intent.putExtras(bundle);
             startActivity(intent);
             finish();

@@ -79,7 +79,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/slipId"
                     android:layout_width="274dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -106,7 +106,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/editText4"
+                    android:id="@+id/timeStamp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -134,7 +134,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/rentersName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -276,7 +276,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/editText11"
+                    android:id="@+id/pickupAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -305,7 +305,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/editText12"
+                    android:id="@+id/dropAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -342,7 +342,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/textView18"
+                    android:id="@+id/latitude"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -369,7 +369,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/textView20"
+                    android:id="@+id/longitude"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
